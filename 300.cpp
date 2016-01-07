@@ -1,23 +1,23 @@
-class NumArray {
+class Solution {
 public:
-    NumArray(vector<int> &nums) {
-        for (auto num : nums) {
-            if (sums.empty()) {
-                sums.push_back(num);
-            } else {
-                sums.push_back(sums.back() + num);
+    int lengthOfLIS(vector<int>& nums) {
+
+        const int size = nums.size();
+        vector<int> dp(size + 1, 1);
+        int maxLen = 0;
+
+        for (int idx = 0; idx < size; ++idx) {
+            int curLen = 0;
+            for (int pre = idx - 1; pre >= 0; --pre) {
+                if (nums[pre] < nums[idx]) {
+                    curLen = max(curLen, dp[pre]);
+                }
             }
+
+            dp[idx] += curLen;
+            maxLen = max(maxLen, dp[idx]);
         }
-    }
 
-    int sumRange(int i, int j) {
-        if (sums.empty())
-            return 0;
-        else
-            return sums[max(i, 0)] - 
-                        sums[min(j, sums.size() - 1)];
+        return maxLen;
     }
-
-private:
-    vector<int> sums;
 };
