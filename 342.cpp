@@ -1,19 +1,17 @@
 class Solution {
 public:
     bool isPowerOfFour(int num) {
-        if (num < 0) {
+        if (num <= 0) {
             return false;
         } else {
-            int count = 0;
-            for (int i = 0; i < 16; ++i, num >>= 2) {
-                if ((num & 3) == 1) {
-                    ++count;
-                } else if ((num & 3) != 0) {
-                    return false;
-                }
-            }
+            //test even bit if is zero(start from 1)
+            int even = 0xaaaaaaaa;
+            int odd = 0x55555555;
             
-            return count == 1;
+            if ((even & num) == 0 && (odd & (num << 1)) == 0)
+                return true;
+            
+            return false;
         }
     }
 };
