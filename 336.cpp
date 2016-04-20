@@ -1,4 +1,5 @@
 class Solution {
+    //判断是否是水仙花数字
     bool isPal(string& s, int start, int end) {
         while(start < end) {
             if(s[start++] != s[end--])
@@ -19,7 +20,10 @@ public:
         for(int i = 0; i < words.size(); i++) {
             table[words[i]]=i;
         }
+
         
+
+
         vector<int> r(2);
         for(int i = 0; i < words.size(); i++) {
             string cur = words[i];
