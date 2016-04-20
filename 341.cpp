@@ -18,16 +18,26 @@
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-        
+        for (auto nested : nestedList) {
+            if (nested.isInteger()) {
+                next = nested.getInteger();
+            } else {
+                NestedIterator(nested.getList());
+            }
+        }
     }
 
-    int next() {
-        
+    int next() {  
+        return next;
     }
 
     bool hasNext() {
-        
+        return hasNext;
     }
+    
+private:
+    int next;
+    bool hasNext;
 };
 
 /**
