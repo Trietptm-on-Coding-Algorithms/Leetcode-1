@@ -1,14 +1,19 @@
 class Solution {
 public:
     int integerBreak(int n) {
-        vector<int> dp(n + 1, 1);
-        for (int i = 2; i <= n; ++i) {
-            for (int j = 1; j < i; ++j) {
-                dp[i] = max(dp[i], 
-                max(dp[j], j) * max(dp[i-j], i-j));    
-            }
-        }
         
-        return dp.back();
+        if (n < 4) {
+            return n - 1; 
+        } else if (n == 4) {
+            return n;
+        } else {
+            int result = 1;
+            while(n > 4) {
+                result *= 3;
+                n -= 3;
+            }
+            
+            return result * n;
+        }
     }
 };
