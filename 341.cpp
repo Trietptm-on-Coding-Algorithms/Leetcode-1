@@ -18,32 +18,35 @@
 class NestedIterator {
 public:
     NestedIterator(vector<NestedInteger> &nestedList) {
-        if (nestedList.empty()) {
-            hasNext = false;
-        } else if (nestedList[0].isInteger()){
-            hasNext = true;
-            next = nestedList[0].getInteger();
-            nestedList.erase(nestedList.begin());
-        } else {
-            
-        }
+        begins.push(nestedList.begin());
+        ends.push(nestedList.end());
     }
 
-    int next() {          
-        int result = next;
-        
-        
-        
-        return result;
+    int next() {
+        hasNext();
+        return (begins.top()++)->getInteger();
     }
 
     bool hasNext() {
-        return hasNext;
+        while (!begins.empty()) {
+            if (begins.top() == ends.top()) {
+                begins.pop();
+                ends.pop();
+            } else if (begins.top()->isInteger()) {
+                return true;
+            } else {
+                auto x = begins.top();
+                begins.top()++;
+                begins.push(x->getList().begin());
+                ends.pushx->getList().end());
+            }
+        }
+        
+        return false;
     }
     
 private:
-    static int next;
-    static bool hasNext;
+    stack<vector<NestedInteger>::iterator> begins, ends;
 };
 
 /**

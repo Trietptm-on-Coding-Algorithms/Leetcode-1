@@ -1,5 +1,5 @@
 class Solution {
-    //判断是否是水仙花数字
+    //鍒ゆ柇鏄惁鏄按浠欒姳鏁板瓧
     bool isPal(string& s, int start, int end) {
         while(start < end) {
             if(s[start++] != s[end--])
