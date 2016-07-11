@@ -43,12 +43,12 @@ class Twitter {
     make_heap(h.begin(), h.end(), f);
 
     const int n = 10;
-    vector<int> result(n, 0);
+    vector<int> result;
 
     for (int i = 0; i < n && !h.empty(); ++i) {
       pop_heap(h.begin(), h.end(), f);
       auto& top = h.back();
-      result[i] = top.second->id;
+      result.push_back(top.second->id);
 
       if (top.first == top.second--) {
         h.pop_back();
@@ -66,7 +66,7 @@ class Twitter {
     }
   }
 
-  void unfollow(int followId, int followeeId) {
+  void unfollow(int followerId, int followeeId) {
     following[followerId].erase(followeeId);
   } 
 };
