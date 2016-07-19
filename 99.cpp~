@@ -1,0 +1,12 @@
+class Solution {
+ public:
+  void recoverTree(TreeNode* root) {
+    
+  }
+
+ private:
+  vector<TreeNode*> nodes;
+  void help(TreeNode* cur, vector<TreeNode*>& nodes) {
+    
+  }
+};
