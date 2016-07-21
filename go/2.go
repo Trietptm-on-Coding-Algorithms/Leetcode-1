@@ -1,8 +1,10 @@
+package LeetCode
+
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	carry, sum := 0, 0
 	head := &ListNode{0, nil}
 	cur = head
-	
+
 	for ; l1 != nil && l2 != nil; l1, l2 = l1.Next, l2.Next {
 		sum = l1.Val + l2.Val + carry
 		node := &ListNode{sum % 10, nil}
